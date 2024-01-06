@@ -1,10 +1,12 @@
-﻿using NotebookDakhnovichMaria.Presenter;
+﻿using NotebookDakhnovichMaria.DatabaseFramework;
+using NotebookDakhnovichMaria.Presenter;
 
 class Program
 {
     static void Main()
     {
-        MyNotebook contactList = new MyNotebook();
+        IDataBase db = new DataBase(new NoteContext());
+        MyNotebook contactList = new MyNotebook(db);
 
         while (true)
         {

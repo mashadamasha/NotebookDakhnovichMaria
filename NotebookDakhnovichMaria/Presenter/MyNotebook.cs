@@ -1,12 +1,14 @@
-﻿namespace NotebookDakhnovichMaria.Presenter;
+﻿using NotebookDakhnovichMaria.DatabaseFramework;
+
+namespace NotebookDakhnovichMaria.Presenter;
 
 public class MyNotebook : IMyNotebook
 {
     public List<ContactData> contacts;
 
-    public MyNotebook()
+    public MyNotebook(IDataBase db)
     {
-        contacts = new List<ContactData>();
+        contacts = db.LoadContacts();
     }
 
     public void ShowAllContacts()

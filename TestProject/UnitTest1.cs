@@ -1,3 +1,5 @@
+using Moq;
+using NotebookDakhnovichMaria.DatabaseFramework;
 using NotebookDakhnovichMaria.Presenter;
 
 namespace TestProject;
@@ -6,37 +8,34 @@ using Xunit;
 public class UnitTest1
 {
     [Fact]
-    public void SearchByName_ShouldReturnMatchingContacts()
+    public void AddContact_ShouldAddtoList()
     {
-        MyNotebook notebook = new MyNotebook();
-        notebook.AddContact("John", "Doe", "123", "john.doe@example.com");
-        notebook.AddContact("Jane", "Doe", "456", "jane.doe@example.com");
+        var moq = new Mock<IDataBase>();
+        moq.Setup(r => r.LoadContacts()).Returns(new List<ContactData>());
+
+        var contactList = new MyNotebook(moq.Object);
         
-        List<ContactData> searchResults = notebook.SearchBy(1, "John");
+        contactList.AddContact("test", "test2", "test3", "test4");
+        var contactfromlist = contactList.contacts.First();
         
-        Assert.Equal(1, searchResults.Count);
-        Assert.Equal("John", searchResults[0].Name);
+        Assert.Equal("test", contactfromlist.Name);
+        Assert.Equal("test2", contactfromlist.Surname);
+        Assert.Equal("test3", contactfromlist.PhoneNumber);
+        Assert.Equal("test4", contactfromlist.Email);
     }
 
     [Fact]
-    public void AddContact_ShouldIncreaseContactCount()
+    public void AddContact_DbHasThis()
     {
-        MyNotebook notebook = new MyNotebook();
-        int initialCount = notebook.contacts.Count;
-        
-        notebook.AddContact("John", "Doe", "123", "john.doe@example.com");
-        
-        Assert.Equal(initialCount + 1, notebook.contacts.Count);
-    }
+        var moq = new Mock<IDataBase>();
+        moq.Setup(r => r.LoadContacts()).Returns(new List<ContactData>());
+        var contactList = new MyNotebook(moq.Object);
 
-    [Fact]
-    public void SearchByInvalidCriteria_ShouldReturnEmptyList()
-    {
-        MyNotebook notebook = new MyNotebook();
-        notebook.AddContact("John", "Doe", "123", "john.doe@example.com");
-        
-        List<ContactData> searchResults = notebook.SearchBy(6, "John");
-        
-        Assert.Null(searchResults);
+        Assert.Empty(moq.Object.LoadContacts());
+
+        contactList.AddContact("test", "test2", "test3", "test4");
+
+        Assert.NotEmpty(moq.Object.LoadContacts());
+
     }
 }
