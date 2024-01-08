@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotebookDakhnovichMaria", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{2BDC966B-7723-452A-8151-ABD4C65AB025}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebREalization", "WebREalization\WebREalization.csproj", "{956A8F5F-F198-4301-8369-FC4367578530}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2BDC966B-7723-452A-8151-ABD4C65AB025}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BDC966B-7723-452A-8151-ABD4C65AB025}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BDC966B-7723-452A-8151-ABD4C65AB025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956A8F5F-F198-4301-8369-FC4367578530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956A8F5F-F198-4301-8369-FC4367578530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956A8F5F-F198-4301-8369-FC4367578530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956A8F5F-F198-4301-8369-FC4367578530}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
