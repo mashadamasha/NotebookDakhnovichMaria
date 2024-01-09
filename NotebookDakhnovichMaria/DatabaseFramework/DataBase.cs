@@ -1,4 +1,5 @@
-﻿using NotebookDakhnovichMaria.Presenter;
+﻿using System.Collections.ObjectModel;
+using NotebookDakhnovichMaria.Presenter;
 
 namespace NotebookDakhnovichMaria.DatabaseFramework;
 
@@ -33,6 +34,15 @@ public class DataBase : IDataBase
         
         _context.Contacts.AddRangeAsync(_contacts.Select(x => ConvertToDTO(x)).ToList());
         _context.SaveChanges();
+    }
+    
+    public async void SaveContacts(ObservableCollection<ContactDataDto> contacts)
+    {
+        _context.Contacts.RemoveRange(_context.Contacts);
+        await _context.SaveChangesAsync();
+
+        _context.Contacts.AddRangeAsync(contacts);
+        await _context.SaveChangesAsync();
     }
     
     private ContactDataDto ConvertToDTO(ContactData t)

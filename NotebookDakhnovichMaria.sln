@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebREalization", "WebREalization\WebREalization.csproj", "{956A8F5F-F198-4301-8369-FC4367578530}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaUINotebook", "AvaloniaUINotebook\AvaloniaUINotebook.csproj", "{2E266E30-F903-4035-878A-291BD2FD72B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{956A8F5F-F198-4301-8369-FC4367578530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{956A8F5F-F198-4301-8369-FC4367578530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{956A8F5F-F198-4301-8369-FC4367578530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E266E30-F903-4035-878A-291BD2FD72B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E266E30-F903-4035-878A-291BD2FD72B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E266E30-F903-4035-878A-291BD2FD72B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E266E30-F903-4035-878A-291BD2FD72B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
