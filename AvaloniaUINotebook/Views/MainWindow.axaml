@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaUINotebook.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaUINotebook.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaUINotebook">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Левая часть окна - список контактов -->
+            <ColumnDefinition Width="Auto"/>
+
+            <!-- Правая часть окна - информация о контакте -->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая часть: ListBox -->
+        <ListBox Grid.Column="0" ItemsSource="{Binding ContactList}" SelectedItem="{Binding SelectedContact}"
+                 MinWidth="200">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding name}" />
+                        <TextBlock Text="{Binding surname}" Margin="2,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Правая часть: StackPanel -->
+        <StackPanel Grid.Column="1" Margin="10,10,10,10">
+            <TextBlock Text="Имя:"/>
+            <TextBox Text="{Binding Name, Mode=TwoWay}" IsEnabled="{Binding IsEditMode}" MaxLength="150"/>
+    
+            <TextBlock Text="Фамилия:"/>
+            <TextBox Text="{Binding Surname, Mode=TwoWay}" IsEnabled="{Binding IsEditMode}" MaxLength="150"/>
+    
+            <TextBlock Text="Телефон:"/>
+            <TextBox Text="{Binding PhoneNumber, Mode=TwoWay}" IsEnabled="{Binding IsEditMode}"/>
+    
+            <TextBlock Text="Email:"/>
+            <TextBox Text="{Binding Email, Mode=TwoWay}" IsEnabled="{Binding IsEditMode}"/>
+    
+            <!-- Другие поля контакта, если нужно -->
+    
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="Добавить" Command="{Binding EnableEditing}" Margin="5" IsEnabled="{Binding !IsEditMode}"/>
+                <Button Content="Сохранить" Command="{Binding SaveNewContact}" Margin="5" IsEnabled="{Binding IsEditMode}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</Window>
